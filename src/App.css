@@ -1,38 +1,65 @@
 .App {
+  max-width: 1200px;
+  min-width: 500px;
+  margin: 0 auto;
+}
+/* 에디터 */
+.DiaryEditor {
+  border: 1px solid gray;
+  text-align: center;
+  padding: 20px;
+}
+.DiaryEditor input,
+textarea {
+  margin-bottom: 20px;
+  width: 500px;
+  padding: 10px;
+}
+.DiaryEditor textarea {
+  height: 150px;
+}
+.DiaryEditor select {
+  width: 350px;
+  padding: 10px;
+  outline: none;
+  margin-bottom: 20px;
+}
+.DiaryEditor button {
+  width: 500px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* 리스트 */
+.DiaryList {
+  border: 1px solid gray;
+  padding: 20px;
+  margin-top: 20px;
+}
+.DiaryList h2 {
+  text-align: center;
+}
+.DiaryList h4 {
+  color: gray;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* 아이템 */
+.DiaryItem {
+  background-color: rgb(240, 240, 240);
+  margin-bottom: 10px;
+  padding: 20px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.DiaryItem .info {
+  border-bottom: 1px solid gray;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.DiaryItem .date {
+  color: gray;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.DiaryItem .content {
+  font-weight: bold;
+  padding-bottom: 10px;
+  margin: 20px 0;
 }
