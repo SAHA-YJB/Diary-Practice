@@ -23,11 +23,17 @@ function App() {
     const removedDiary = diary.filter((item) => item.id !== targetId);
     setDiary(removedDiary);
   };
-
+  const onEdit = (targetId, newContent) => {
+    setDiary(
+      diary.map((item) =>
+        item.id === targetId ? { ...item, content: newContent } : item
+      )
+    );
+  };
   return (
     <div className="App">
       <DiaryEditor onCreate={onCreate} />
-      <DiaryList allDiary={diary} onRemove={onRemove} />
+      <DiaryList onEdit={onEdit} allDiary={diary} onRemove={onRemove} />
     </div>
   );
 }
