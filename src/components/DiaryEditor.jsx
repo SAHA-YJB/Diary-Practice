@@ -22,7 +22,6 @@ const DiaryEditor = ({ onCreate }) => {
     if (state.content.length < 5) {
       return contentInput.current.focus();
     }
-
     onCreate(state.author, state.content, state.emotion);
     alert("저장 완료");
     setState({

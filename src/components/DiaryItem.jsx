@@ -41,7 +41,7 @@ const DiaryItem = ({
         <br />
         <span>Today Emotion: {emotion}</span>
         <br />
-        <span className="date">{new Date(createDate).toLocaleString()}</span>
+        <span className="date">{new Date().toLocaleString()}</span>
       </div>
       <div className="content">
         {isEdit ? (

@@ -1,41 +1,36 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import "./App.css";
 import DiaryEditor from "./components/DiaryEditor";
 import DiaryList from "./components/DiaryList";
+import { useDispatch, useSelector } from "react-redux";
+import { REMOVE, CREATE, EDIT } from "./redux/modules/diary";
 
-function App() {
-  const [diary, setDiary] = useState([]);
+const App = () => {
   const diaryId = useRef(0);
+  const diaryData = useSelector((state) => state.diary);
+  const dispatch = useDispatch();
 
   const onCreate = (author, content, emotion) => {
-    const createDate = new Date().getTime();
-    const newDiary = {
-      author,
-      content,
-      emotion,
-      createDate,
-      id: diaryId.current,
-    };
+    dispatch({
+      type: CREATE,
+      data: { author, content, emotion, id: diaryId.current },
+    });
     diaryId.current += 1;
-    setDiary([newDiary, ...diary]);
   };
+
   const onRemove = (targetId) => {
-    const removedDiary = diary.filter((item) => item.id !== targetId);
-    setDiary(removedDiary);
+    dispatch({ type: REMOVE, targetId });
   };
+
   const onEdit = (targetId, newContent) => {
-    setDiary(
-      diary.map((item) =>
-        item.id === targetId ? { ...item, content: newContent } : item
-      )
-    );
+    dispatch({ type: EDIT, targetId, newContent });
   };
   return (
     <div className="App">
       <DiaryEditor onCreate={onCreate} />
-      <DiaryList onEdit={onEdit} allDiary={diary} onRemove={onRemove} />
+      <DiaryList onEdit={onEdit} allDiary={diaryData} onRemove={onRemove} />
     </div>
   );
-}
+};
 
 export default App;
